@@ -1,0 +1,6 @@
+{"id": "ex_028", "language": "ar", "input": "ممكن أعرف تفاصيل Sony WH-1000XM6؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Sony WH-1000XM6"}}}
+{"id": "ex_007", "language": "ar", "input": "عايز ألغي الطلب 7821", "expected": {"tool": "cancel_order", "arguments": {"order_id": 7821}}}
+{"id": "ex_032", "language": "en", "input": "Thanks for your help", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_014", "language": "en", "input": "Change the shipping address for order 8812 to Cairo", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 8812, "new_address": "Cairo"}}}
+{"id": "ex_002", "language": "ar", "input": "الطلب 7291 وصل لفين؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 7291}}}
+{"id": "ex_021", "language": "ar", "input": "محتاج أعمل إرجاع للطلب 2901 لأنه مقاسه غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 2901, "reason": "مقاسه غلط"}}}

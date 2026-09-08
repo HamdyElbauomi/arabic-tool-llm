@@ -1,0 +1,24 @@
+{"id": "ex_013", "language": "ar", "input": "غير عنوان الطلب 5512 للمنصورة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 5512, "new_address": "المنصورة"}}}
+{"id": "ex_036", "language": "arabizi", "input": "shokran ya bro", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_008", "language": "en", "input": "Cancel order 9921", "expected": {"tool": "cancel_order", "arguments": {"order_id": 9921}}}
+{"id": "ex_006", "language": "en", "input": "Track my order 5521", "expected": {"tool": "get_order_status", "arguments": {"order_id": 5521}}}
+{"id": "ex_034", "language": "en", "input": "Hello, how are you?", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_001", "language": "ar", "input": "فين طلبي رقم 4821؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 4821}}}
+{"id": "ex_027", "language": "mixed", "input": "عايز معلومات عن MacBook Air M5", "expected": {"tool": "get_product_info", "arguments": {"product_name": "MacBook Air M5"}}}
+{"id": "ex_025", "language": "ar", "input": "هل iPhone 17 موجود؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "iPhone 17"}}}
+{"id": "ex_029", "language": "en", "input": "Do you have information about PlayStation 6?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "PlayStation 6"}}}
+{"id": "ex_018", "language": "mixed", "input": "order 7215 غير الـshipping address بتاعه لـ Giza", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 7215, "new_address": "Giza"}}}
+{"id": "ex_019", "language": "ar", "input": "عايز أرجع الطلب 6211 عشان المنتج تالف", "expected": {"tool": "return_order", "arguments": {"order_id": 6211, "reason": "المنتج تالف"}}}
+{"id": "ex_024", "language": "ar", "input": "رجعلي الطلب 4201 المنتج مش شغال", "expected": {"tool": "return_order", "arguments": {"order_id": 4201, "reason": "المنتج مش شغال"}}}
+{"id": "ex_005", "language": "ar", "input": "عايز أعرف الأوردر 6192 وصل ولا لسه", "expected": {"tool": "get_order_status", "arguments": {"order_id": 6192}}}
+{"id": "ex_031", "language": "ar", "input": "شكراً جدًا", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_022", "language": "mixed", "input": "عايز return order 7732 عشان المنتج مختلف عن الصورة", "expected": {"tool": "return_order", "arguments": {"order_id": 7732, "reason": "المنتج مختلف عن الصورة"}}}
+{"id": "ex_012", "language": "arabizi", "input": "3ayz al8y order 7712", "expected": {"tool": "cancel_order", "arguments": {"order_id": 7712}}}
+{"id": "ex_009", "language": "mixed", "input": "ممكن cancel الأوردر 6631؟", "expected": {"tool": "cancel_order", "arguments": {"order_id": 6631}}}
+{"id": "ex_035", "language": "mixed", "input": "تمام thank you", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_017", "language": "en", "input": "Update order 2109 delivery address to Mansoura", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 2109, "new_address": "Mansoura"}}}
+{"id": "ex_023", "language": "en", "input": "I need to return order 5504 because I received the wrong product", "expected": {"tool": "return_order", "arguments": {"order_id": 5504, "reason": "I received the wrong product"}}}
+{"id": "ex_011", "language": "en", "input": "I want to cancel my order number 3255", "expected": {"tool": "cancel_order", "arguments": {"order_id": 3255}}}
+{"id": "ex_003", "language": "en", "input": "What's the status of order 9302?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 9302}}}
+{"id": "ex_015", "language": "mixed", "input": "عايز update address بتاع order 7611 للإسكندرية", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 7611, "new_address": "الإسكندرية"}}}
+{"id": "ex_030", "language": "mixed", "input": "AirPods Pro 3 موجودة عندكم؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "AirPods Pro 3"}}}

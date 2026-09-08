@@ -1,0 +1,6 @@
+{"id": "ex_033", "language": "ar", "input": "مساء الخير", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "ex_016", "language": "ar", "input": "عدل عنوان أوردر 4492 وخليه طنطا", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 4492, "new_address": "طنطا"}}}
+{"id": "ex_020", "language": "en", "input": "Return order 8813 because the item is damaged", "expected": {"tool": "return_order", "arguments": {"order_id": 8813, "reason": "the item is damaged"}}}
+{"id": "ex_004", "language": "mixed", "input": "ممكن check order 3812؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 3812}}}
+{"id": "ex_010", "language": "ar", "input": "مش عايز الطلب رقم 8820، الغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 8820}}}
+{"id": "ex_026", "language": "en", "input": "Tell me about the Samsung Galaxy S26", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Samsung Galaxy S26"}}}
