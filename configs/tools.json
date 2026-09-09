@@ -1,22 +1,46 @@
 {
   "tools": {
     "get_order_status": {
-      "required_arguments": ["order_id"]
+      "description": "Get the current status of an existing order.",
+      "required_arguments": ["order_id"],
+      "parameters": {
+        "order_id": "integer"
+      }
     },
     "cancel_order": {
-      "required_arguments": ["order_id"]
+      "description": "Cancel an existing order.",
+      "required_arguments": ["order_id"],
+      "parameters": {
+        "order_id": "integer"
+      }
     },
     "update_shipping_address": {
-      "required_arguments": ["order_id", "new_address"]
+      "description": "Update the shipping address of an existing order.",
+      "required_arguments": ["order_id", "new_address"],
+      "parameters": {
+        "order_id": "integer",
+        "new_address": "string"
+      }
     },
     "return_order": {
-      "required_arguments": ["order_id", "reason"]
+      "description": "Request a return for an existing order.",
+      "required_arguments": ["order_id", "reason"],
+      "parameters": {
+        "order_id": "integer",
+        "reason": "string"
+      }
     },
     "get_product_info": {
-      "required_arguments": ["product_name"]
+      "description": "Get information about a product.",
+      "required_arguments": ["product_name"],
+      "parameters": {
+        "product_name": "string"
+      }
     },
     "no_tool": {
-      "required_arguments": []
+      "description": "Use when no external tool is required.",
+      "required_arguments": [],
+      "parameters": {}
     }
   }
 }
