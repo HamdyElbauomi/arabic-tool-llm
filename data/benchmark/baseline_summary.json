@@ -1,0 +1,10 @@
+{
+  "model": "Qwen/Qwen3-4B",
+  "fine_tuned": false,
+  "quantization": "4-bit NF4",
+  "total_examples": 6,
+  "json_validity": 100.0,
+  "tool_accuracy": 100.0,
+  "argument_accuracy": 83.33,
+  "exact_match": 83.33
+}
