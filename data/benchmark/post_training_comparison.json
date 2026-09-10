@@ -1,0 +1,294 @@
+{
+  "base_model": "Qwen/Qwen3-0.6B",
+  "adapter": "D:\\projects\\arabic-tool-llm\\models\\qwen3-0.6b-tool-calling-smoke-lora",
+  "test_examples": 6,
+  "base": {
+    "summary": {
+      "json_validity": 100.0,
+      "tool_accuracy": 83.33,
+      "argument_accuracy": 50.0,
+      "exact_match": 50.0
+    },
+    "predictions": [
+      {
+        "id": "ex_033",
+        "input": "مساء الخير",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"no_tool\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ex_016",
+        "input": "عدل عنوان أوردر 4492 وخليه طنطا",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 4492,
+            "new_address": "طنطا"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 4492,
+            "new_address": "طنطا"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"update_shipping_address\",\n    \"arguments\": {\n        \"order_id\": 4492,\n        \"new_address\": \"طنطا\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ex_020",
+        "input": "Return order 8813 because the item is damaged",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 8813,
+            "reason": "the item is damaged"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 8813,
+            "reason": "item is damaged"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 8813,\n        \"reason\": \"item is damaged\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_004",
+        "input": "ممكن check order 3812؟",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 3812
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"get_order_status\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_010",
+        "input": "مش عايز الطلب رقم 8820، الغيه",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 8820
+          }
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"no_tool\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_026",
+        "input": "Tell me about the Samsung Galaxy S26",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "Samsung Galaxy S26"
+          }
+        },
+        "prediction": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "Samsung Galaxy S26"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"get_product_info\",\n    \"arguments\": {\n        \"product_name\": \"Samsung Galaxy S26\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      }
+    ]
+  },
+  "fine_tuned": {
+    "summary": {
+      "json_validity": 83.33,
+      "tool_accuracy": 66.67,
+      "argument_accuracy": 66.67,
+      "exact_match": 50.0
+    },
+    "predictions": [
+      {
+        "id": "ex_033",
+        "input": "مساء الخير",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": null,
+        "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}",
+        "metrics": {
+          "json_valid": false,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_016",
+        "input": "عدل عنوان أوردر 4492 وخليه طنطا",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 4492,
+            "new_address": "طنطا"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 4492,
+            "new_address": "طنطا"
+          }
+        },
+        "raw_response": "{\"tool\": \"update_shipping_address\", \"arguments\": {\"order_id\": 4492, \"new_address\": \"طنطا\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ex_020",
+        "input": "Return order 8813 because the item is damaged",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 8813,
+            "reason": "the item is damaged"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 8813,
+            "reason": "item is damaged"
+          }
+        },
+        "raw_response": "{\"tool\": \"return_order\", \"arguments\": {\"order_id\": 8813, \"reason\": \"item is damaged\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_004",
+        "input": "ممكن check order 3812؟",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 3812
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 3812
+          }
+        },
+        "raw_response": "{\"tool\": \"get_order_status\", \"arguments\": {\"order_id\": 3812}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "ex_010",
+        "input": "مش عايز الطلب رقم 8820، الغيه",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 8820
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 8820
+          }
+        },
+        "raw_response": "{\"tool\": \"get_order_status\", \"arguments\": {\"order_id\": 8820}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": true,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "ex_026",
+        "input": "Tell me about the Samsung Galaxy S26",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "Samsung Galaxy S26"
+          }
+        },
+        "prediction": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "Samsung Galaxy S26"
+          }
+        },
+        "raw_response": "{\"tool\": \"get_product_info\", \"arguments\": {\"product_name\": \"Samsung Galaxy S26\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      }
+    ]
+  }
+}
