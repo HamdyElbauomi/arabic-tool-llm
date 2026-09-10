@@ -37,7 +37,7 @@ TOOLS_PATH = (
 OUTPUT_DIR = (
     PROJECT_ROOT
     / "models"
-    / "qwen3-4b-tool-calling-lora"
+    / "qwen3-0.6b-tool-calling-smoke-lora"
 )
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
@@ -246,6 +246,9 @@ def create_training_config():
 
     return SFTConfig(
         output_dir=str(OUTPUT_DIR),
+        model_init_kwargs={
+            "dtype": torch.float16,
+        },
 
         # Small batch because LLM training
         # requires significant GPU memory.
@@ -291,7 +294,7 @@ def create_training_config():
 def main() -> None:
 
     print("=" * 60)
-    print("QWEN3-4B QLORA TRAINING PIPELINE")
+    print("QWEN3 QLORA TRAINING PIPELINE")
     print("=" * 60)
 
     print(f"Base model: {MODEL_NAME}")
@@ -379,6 +382,19 @@ def main() -> None:
             quantization_config
         ),
     )
+    # Keep trainable LoRA adapter weights in FP32.
+    # The quantized base model remains frozen in 4-bit.
+    for param in trainer.model.parameters():
+        if param.requires_grad:
+            param.data = param.data.float()
+
+    trainable_dtypes = {
+        param.dtype
+        for param in trainer.model.parameters()
+        if param.requires_grad
+    }
+
+    print(f"Trainable parameter dtypes: {trainable_dtypes}")
 
     # --------------------------------------------------
     # Show trainable parameters
@@ -388,20 +404,29 @@ def main() -> None:
 
     print("\n")
     print("=" * 60)
-    print("TRAINING PIPELINE READY")
+    print("STARTING QLORA FINE-TUNING")
     print("=" * 60)
 
-    print(
-        "QLoRA model was prepared successfully."
-    )
+    # Start actual fine-tuning
+    train_result = trainer.train()
 
-    print(
-        "Training has NOT started yet."
-    )
+    print("\n")
+    print("=" * 60)
+    print("TRAINING COMPLETED")
+    print("=" * 60)
 
-    print(
-        "Step 10 will call trainer.train()."
-    )
+    print(f"Training loss: {train_result.training_loss:.4f}")
+
+    # Save the trained LoRA adapter
+    trainer.save_model(str(OUTPUT_DIR))
+
+    # Save trainer state and training information
+    trainer.save_state()
+
+    print(f"\nLoRA adapter saved to:")
+    print(OUTPUT_DIR)
+
+    print("\n✅ First fine-tuning completed successfully.")
 
 
 if __name__ == "__main__":
