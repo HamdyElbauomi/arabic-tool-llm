@@ -261,7 +261,7 @@ def create_training_config():
         num_train_epochs=2,
         learning_rate=5e-5,
 
-        warmup_ratio=0.10,
+        warmup_steps=6,
         weight_decay=0.01,
 
         # Our GPU does not support BF16 well,

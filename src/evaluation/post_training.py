@@ -33,14 +33,14 @@ TOOLS_PATH = (
 ADAPTER_PATH = (
     PROJECT_ROOT
     / "models"
-    / "qwen3-0.6b-tool-calling-smoke-lora"
+    / "qwen3-0.6b-tool-calling-v2-lora"
 )
 
 RESULTS_PATH = (
     PROJECT_ROOT
     / "data"
     / "benchmark"
-    / "post_training_comparison.json"
+    / "post_training_comparison_v2.json"
 )
 
 BASE_MODEL = "Qwen/Qwen3-0.6B"

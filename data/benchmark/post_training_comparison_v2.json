@@ -1,0 +1,576 @@
+{
+  "base_model": "Qwen/Qwen3-0.6B",
+  "adapter": "D:\\projects\\arabic-tool-llm\\models\\qwen3-0.6b-tool-calling-v2-lora",
+  "test_examples": 12,
+  "base": {
+    "summary": {
+      "json_validity": 100.0,
+      "tool_accuracy": 50.0,
+      "argument_accuracy": 33.33,
+      "exact_match": 33.33
+    },
+    "predictions": [
+      {
+        "id": "v2_050",
+        "input": "عدل عنوان أوردر 1140 إلى المنصورة",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1140,
+            "new_address": "المنصورة"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1140,
+            "new_address": "منصورة"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"update_shipping_address\",\n    \"arguments\": {\n        \"order_id\": 1140,\n        \"new_address\": \"منصورة\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_093",
+        "input": "عايز return order 1844 عشان المنتج damaged",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1844,
+            "reason": "damaged"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1844,
+            "reason": "damaged"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 1844,\n        \"reason\": \"damaged\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_033",
+        "input": "عايز ألغي الطلب 1398",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1398
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1398,
+            "reason": "wrong_item"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 1398,\n        \"reason\": \"wrong_item\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_094",
+        "input": "return للطلب 1881 لأن وصلني wrong item",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1881,
+            "reason": "wrong_item"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1881,
+            "reason": "wrong_item"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 1881,\n        \"reason\": \"wrong_item\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_099",
+        "input": "Tell me about MacBook Air M5",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "MacBook Air M5"
+          }
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_018",
+        "input": "الطلب 1730 وصل لفين؟",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1730
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"get_order_status\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_114",
+        "input": "هل DJI Osmo Pocket 4 موجود؟",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "DJI Osmo Pocket 4"
+          }
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"no_tool\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_007",
+        "input": "order 1323 wesel fein?",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1323
+          }
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\n    \"tool\": \"no_tool\",\n    \"arguments\": {}\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_124",
+        "input": "تمام شكراً",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_038",
+        "input": "order 1583 عايز ألغيه",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1583
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1583,
+            "reason": "wrong_item"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 1583,\n        \"reason\": \"wrong_item\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_069",
+        "input": "عايز update address بتاع order 1843 لـ Alexandria",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1843,
+            "new_address": "Alexandria"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1843,
+            "new_address": "Alexandria"
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"update_shipping_address\",\n    \"arguments\": {\n        \"order_id\": 1843,\n        \"new_address\": \"Alexandria\"\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_130",
+        "input": "What is your return policy?",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 0
+          }
+        },
+        "raw_response": "{\n    \"tool\": \"return_order\",\n    \"arguments\": {\n        \"order_id\": 0\n    }\n}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      }
+    ]
+  },
+  "fine_tuned": {
+    "summary": {
+      "json_validity": 100.0,
+      "tool_accuracy": 91.67,
+      "argument_accuracy": 83.33,
+      "exact_match": 83.33
+    },
+    "predictions": [
+      {
+        "id": "v2_050",
+        "input": "عدل عنوان أوردر 1140 إلى المنصورة",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1140,
+            "new_address": "المنصورة"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1140,
+            "new_address": "منصورة"
+          }
+        },
+        "raw_response": "{\"tool\": \"update_shipping_address\", \"arguments\": {\"order_id\": 1140, \"new_address\": \"منصورة\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      },
+      {
+        "id": "v2_093",
+        "input": "عايز return order 1844 عشان المنتج damaged",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1844,
+            "reason": "damaged"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1844,
+            "reason": "damaged"
+          }
+        },
+        "raw_response": "{\"tool\": \"return_order\", \"arguments\": {\"order_id\": 1844, \"reason\": \"damaged\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_033",
+        "input": "عايز ألغي الطلب 1398",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1398
+          }
+        },
+        "prediction": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1398
+          }
+        },
+        "raw_response": "{\"tool\": \"cancel_order\", \"arguments\": {\"order_id\": 1398}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_094",
+        "input": "return للطلب 1881 لأن وصلني wrong item",
+        "expected": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1881,
+            "reason": "wrong_item"
+          }
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1881,
+            "reason": "wrong_item"
+          }
+        },
+        "raw_response": "{\"tool\": \"return_order\", \"arguments\": {\"order_id\": 1881, \"reason\": \"wrong_item\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_099",
+        "input": "Tell me about MacBook Air M5",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "MacBook Air M5"
+          }
+        },
+        "prediction": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "MacBook Air M5"
+          }
+        },
+        "raw_response": "{\"tool\": \"get_product_info\", \"arguments\": {\"product_name\": \"MacBook Air M5\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_018",
+        "input": "الطلب 1730 وصل لفين؟",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1730
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1730
+          }
+        },
+        "raw_response": "{\"tool\": \"get_order_status\", \"arguments\": {\"order_id\": 1730}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_114",
+        "input": "هل DJI Osmo Pocket 4 موجود؟",
+        "expected": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "DJI Osmo Pocket 4"
+          }
+        },
+        "prediction": {
+          "tool": "get_product_info",
+          "arguments": {
+            "product_name": "DJI Osmo Pocket 4"
+          }
+        },
+        "raw_response": "{\"tool\": \"get_product_info\", \"arguments\": {\"product_name\": \"DJI Osmo Pocket 4\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_007",
+        "input": "order 1323 wesel fein?",
+        "expected": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1323
+          }
+        },
+        "prediction": {
+          "tool": "get_order_status",
+          "arguments": {
+            "order_id": 1323
+          }
+        },
+        "raw_response": "{\"tool\": \"get_order_status\", \"arguments\": {\"order_id\": 1323}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_124",
+        "input": "تمام شكراً",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_038",
+        "input": "order 1583 عايز ألغيه",
+        "expected": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1583
+          }
+        },
+        "prediction": {
+          "tool": "cancel_order",
+          "arguments": {
+            "order_id": 1583
+          }
+        },
+        "raw_response": "{\"tool\": \"cancel_order\", \"arguments\": {\"order_id\": 1583}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_069",
+        "input": "عايز update address بتاع order 1843 لـ Alexandria",
+        "expected": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1843,
+            "new_address": "Alexandria"
+          }
+        },
+        "prediction": {
+          "tool": "update_shipping_address",
+          "arguments": {
+            "order_id": 1843,
+            "new_address": "Alexandria"
+          }
+        },
+        "raw_response": "{\"tool\": \"update_shipping_address\", \"arguments\": {\"order_id\": 1843, \"new_address\": \"Alexandria\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": true,
+          "arguments_correct": true,
+          "exact_match": true
+        }
+      },
+      {
+        "id": "v2_130",
+        "input": "What is your return policy?",
+        "expected": {
+          "tool": "no_tool",
+          "arguments": {}
+        },
+        "prediction": {
+          "tool": "return_order",
+          "arguments": {
+            "order_id": 1234567890,
+            "reason": "other"
+          }
+        },
+        "raw_response": "{\"tool\": \"return_order\", \"arguments\": {\"order_id\": 1234567890, \"reason\": \"other\"}}",
+        "metrics": {
+          "json_valid": true,
+          "tool_correct": false,
+          "arguments_correct": false,
+          "exact_match": false
+        }
+      }
+    ]
+  }
+}
