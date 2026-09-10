@@ -1,0 +1,115 @@
+{
+  "total_examples": 6,
+  "error_counts": {
+    "invalid_json": 1,
+    "correct": 3,
+    "wrong_argument_value": 1,
+    "wrong_tool": 1
+  },
+  "base_vs_fine_tuned": {
+    "regressed": 1,
+    "correct_in_both": 2,
+    "wrong_in_both": 2,
+    "improved": 1
+  },
+  "errors_by_tool": {
+    "no_tool": {
+      "invalid_json": 1
+    },
+    "update_shipping_address": {
+      "correct": 1
+    },
+    "return_order": {
+      "wrong_argument_value": 1
+    },
+    "get_order_status": {
+      "correct": 1
+    },
+    "cancel_order": {
+      "wrong_tool": 1
+    },
+    "get_product_info": {
+      "correct": 1
+    }
+  },
+  "detailed_errors": [
+    {
+      "id": "ex_033",
+      "input": "مساء الخير",
+      "expected": {
+        "tool": "no_tool",
+        "arguments": {}
+      },
+      "prediction": null,
+      "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}",
+      "error_type": "invalid_json",
+      "details": {
+        "raw_response": "{\"tool\": \"no_tool\", \"arguments\": {}"
+      },
+      "base_vs_tuned": "regressed"
+    },
+    {
+      "id": "ex_020",
+      "input": "Return order 8813 because the item is damaged",
+      "expected": {
+        "tool": "return_order",
+        "arguments": {
+          "order_id": 8813,
+          "reason": "the item is damaged"
+        }
+      },
+      "prediction": {
+        "tool": "return_order",
+        "arguments": {
+          "order_id": 8813,
+          "reason": "item is damaged"
+        }
+      },
+      "raw_response": "{\"tool\": \"return_order\", \"arguments\": {\"order_id\": 8813, \"reason\": \"item is damaged\"}}",
+      "error_type": "wrong_argument_value",
+      "details": {
+        "missing_arguments": [],
+        "extra_arguments": [],
+        "wrong_values": [
+          {
+            "argument": "reason",
+            "expected": "the item is damaged",
+            "predicted": "item is damaged"
+          }
+        ],
+        "possible_text_variations": [
+          {
+            "argument": "reason",
+            "expected": "the item is damaged",
+            "predicted": "item is damaged",
+            "similarity": 0.882
+          }
+        ]
+      },
+      "base_vs_tuned": "wrong_in_both"
+    },
+    {
+      "id": "ex_010",
+      "input": "مش عايز الطلب رقم 8820، الغيه",
+      "expected": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 8820
+        }
+      },
+      "prediction": {
+        "tool": "get_order_status",
+        "arguments": {
+          "order_id": 8820
+        }
+      },
+      "raw_response": "{\"tool\": \"get_order_status\", \"arguments\": {\"order_id\": 8820}}",
+      "error_type": "wrong_tool",
+      "details": {
+        "expected_tool": "cancel_order",
+        "predicted_tool": "get_order_status"
+      },
+      "base_vs_tuned": "wrong_in_both"
+    }
+  ]
+}
