@@ -1,24 +1,120 @@
-{"id": "ex_013", "language": "ar", "input": "غير عنوان الطلب 5512 للمنصورة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 5512, "new_address": "المنصورة"}}}
-{"id": "ex_036", "language": "arabizi", "input": "shokran ya bro", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_008", "language": "en", "input": "Cancel order 9921", "expected": {"tool": "cancel_order", "arguments": {"order_id": 9921}}}
-{"id": "ex_006", "language": "en", "input": "Track my order 5521", "expected": {"tool": "get_order_status", "arguments": {"order_id": 5521}}}
-{"id": "ex_034", "language": "en", "input": "Hello, how are you?", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_001", "language": "ar", "input": "فين طلبي رقم 4821؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 4821}}}
-{"id": "ex_027", "language": "mixed", "input": "عايز معلومات عن MacBook Air M5", "expected": {"tool": "get_product_info", "arguments": {"product_name": "MacBook Air M5"}}}
-{"id": "ex_025", "language": "ar", "input": "هل iPhone 17 موجود؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "iPhone 17"}}}
-{"id": "ex_029", "language": "en", "input": "Do you have information about PlayStation 6?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "PlayStation 6"}}}
-{"id": "ex_018", "language": "mixed", "input": "order 7215 غير الـshipping address بتاعه لـ Giza", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 7215, "new_address": "Giza"}}}
-{"id": "ex_019", "language": "ar", "input": "عايز أرجع الطلب 6211 عشان المنتج تالف", "expected": {"tool": "return_order", "arguments": {"order_id": 6211, "reason": "المنتج تالف"}}}
-{"id": "ex_024", "language": "ar", "input": "رجعلي الطلب 4201 المنتج مش شغال", "expected": {"tool": "return_order", "arguments": {"order_id": 4201, "reason": "المنتج مش شغال"}}}
-{"id": "ex_005", "language": "ar", "input": "عايز أعرف الأوردر 6192 وصل ولا لسه", "expected": {"tool": "get_order_status", "arguments": {"order_id": 6192}}}
-{"id": "ex_031", "language": "ar", "input": "شكراً جدًا", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_022", "language": "mixed", "input": "عايز return order 7732 عشان المنتج مختلف عن الصورة", "expected": {"tool": "return_order", "arguments": {"order_id": 7732, "reason": "المنتج مختلف عن الصورة"}}}
-{"id": "ex_012", "language": "arabizi", "input": "3ayz al8y order 7712", "expected": {"tool": "cancel_order", "arguments": {"order_id": 7712}}}
-{"id": "ex_009", "language": "mixed", "input": "ممكن cancel الأوردر 6631؟", "expected": {"tool": "cancel_order", "arguments": {"order_id": 6631}}}
-{"id": "ex_035", "language": "mixed", "input": "تمام thank you", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_017", "language": "en", "input": "Update order 2109 delivery address to Mansoura", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 2109, "new_address": "Mansoura"}}}
-{"id": "ex_023", "language": "en", "input": "I need to return order 5504 because I received the wrong product", "expected": {"tool": "return_order", "arguments": {"order_id": 5504, "reason": "I received the wrong product"}}}
-{"id": "ex_011", "language": "en", "input": "I want to cancel my order number 3255", "expected": {"tool": "cancel_order", "arguments": {"order_id": 3255}}}
-{"id": "ex_003", "language": "en", "input": "What's the status of order 9302?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 9302}}}
-{"id": "ex_015", "language": "mixed", "input": "عايز update address بتاع order 7611 للإسكندرية", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 7611, "new_address": "الإسكندرية"}}}
-{"id": "ex_030", "language": "mixed", "input": "AirPods Pro 3 موجودة عندكم؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "AirPods Pro 3"}}}
+{"id": "v2_066", "language": "ar", "input": "عدل عنوان أوردر 1732 إلى الزقازيق", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1732, "new_address": "الزقازيق"}}}
+{"id": "v2_034", "language": "ar", "input": "مش عايز الأوردر 1435، الغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1435}}}
+{"id": "v2_080", "language": "arabizi", "input": "return order 1363 3ashan el size ghalat", "expected": {"tool": "return_order", "arguments": {"order_id": 1363, "reason": "wrong_size"}}}
+{"id": "v2_063", "language": "arabizi", "input": "8ayar address order 1621 le الإسكندرية", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1621, "new_address": "الإسكندرية"}}}
+{"id": "v2_031", "language": "arabizi", "input": "3ayz al8y order 1324", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1324}}}
+{"id": "v2_098", "language": "ar", "input": "هل Samsung Galaxy S26 موجود؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Samsung Galaxy S26"}}}
+{"id": "v2_024", "language": "arabizi", "input": "3ayz a3raf status order 1952", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1952}}}
+{"id": "v2_037", "language": "mixed", "input": "ممكن cancel order 1546؟", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1546}}}
+{"id": "v2_117", "language": "mixed", "input": "عايز details عن Xiaomi 17 Pro", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Xiaomi 17 Pro"}}}
+{"id": "v2_096", "language": "arabizi", "input": "return order 1955 3ashan el product msh sh8al", "expected": {"tool": "return_order", "arguments": {"order_id": 1955, "reason": "not_working"}}}
+{"id": "v2_019", "language": "en", "input": "What is the status of order 1767?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1767}}}
+{"id": "v2_078", "language": "mixed", "input": "return للطلب 1289 لأن المنتج damaged", "expected": {"tool": "return_order", "arguments": {"order_id": 1289, "reason": "damaged"}}}
+{"id": "v2_142", "language": "arabizi", "input": "3andko return policy eh?", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_022", "language": "mixed", "input": "order 1878 وصل ولا لسه؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1878}}}
+{"id": "v2_070", "language": "mixed", "input": "order 1880 غير الـ shipping address لـ Tanta", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1880, "new_address": "Tanta"}}}
+{"id": "v2_009", "language": "ar", "input": "فين طلبي رقم 1397؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1397}}}
+{"id": "v2_115", "language": "en", "input": "Tell me about Bose QuietComfort Ultra", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Bose QuietComfort Ultra"}}}
+{"id": "v2_036", "language": "en", "input": "I no longer want order 1509, cancel it", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1509}}}
+{"id": "v2_065", "language": "ar", "input": "غير عنوان الطلب 1695 وخليه الجيزة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1695, "new_address": "الجيزة"}}}
+{"id": "v2_141", "language": "arabizi", "input": "shokran ya bro", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_119", "language": "arabizi", "input": "3ayz info 3an Huawei MateBook X Pro", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Huawei MateBook X Pro"}}}
+{"id": "v2_052", "language": "en", "input": "Update order 1214 delivery address to طنطا", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1214, "new_address": "طنطا"}}}
+{"id": "v2_103", "language": "arabizi", "input": "3ayz info 3an Dell XPS 14", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Dell XPS 14"}}}
+{"id": "v2_139", "language": "arabizi", "input": "sabah el 5er", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_011", "language": "en", "input": "What is the status of order 1471?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1471}}}
+{"id": "v2_043", "language": "en", "input": "Cancel order 1768", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1768}}}
+{"id": "v2_089", "language": "ar", "input": "عايز أرجع الطلب 1696 عشان وصلني منتج غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 1696, "reason": "wrong_item"}}}
+{"id": "v2_090", "language": "ar", "input": "محتاج أعمل إرجاع للطلب 1733 لأن المقاس غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 1733, "reason": "wrong_size"}}}
+{"id": "v2_140", "language": "arabizi", "input": "masa2 el 5er", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_067", "language": "en", "input": "Change the shipping address for order 1769 to Cairo", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1769, "new_address": "Cairo"}}}
+{"id": "v2_040", "language": "arabizi", "input": "cancel order 1657 3ashan msh 3ayzo", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1657}}}
+{"id": "v2_136", "language": "mixed", "input": "شكراً for your help", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_121", "language": "ar", "input": "مساء الخير", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_092", "language": "en", "input": "I need to return order 1807 because I changed my mind", "expected": {"tool": "return_order", "arguments": {"order_id": 1807, "reason": "other"}}}
+{"id": "v2_110", "language": "mixed", "input": "Nintendo Switch 2 موجود عندكم؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Nintendo Switch 2"}}}
+{"id": "v2_002", "language": "ar", "input": "الطلب 1138 وصل لفين؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1138}}}
+{"id": "v2_131", "language": "en", "input": "Do you deliver on weekends?", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_014", "language": "mixed", "input": "order 1582 وصل ولا لسه؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1582}}}
+{"id": "v2_134", "language": "mixed", "input": "تمام thank you", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_042", "language": "ar", "input": "مش عايز الأوردر 1731، الغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1731}}}
+{"id": "v2_049", "language": "ar", "input": "غير عنوان الطلب 1103 وخليه القاهرة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1103, "new_address": "القاهرة"}}}
+{"id": "v2_128", "language": "en", "input": "Good morning", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_087", "language": "arabizi", "input": "3ayz araga3 order 1622 3ashan msh monaseb leya", "expected": {"tool": "return_order", "arguments": {"order_id": 1622, "reason": "other"}}}
+{"id": "v2_003", "language": "en", "input": "What is the status of order 1175?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1175}}}
+{"id": "v2_105", "language": "ar", "input": "ممكن أعرف معلومات عن ASUS ROG Zephyrus?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "ASUS ROG Zephyrus"}}}
+{"id": "v2_095", "language": "arabizi", "input": "3ayz araga3 order 1918 3ashan el size ghalat", "expected": {"tool": "return_order", "arguments": {"order_id": 1918, "reason": "wrong_size"}}}
+{"id": "v2_084", "language": "en", "input": "I need to return order 1511 because I received the wrong item", "expected": {"tool": "return_order", "arguments": {"order_id": 1511, "reason": "wrong_item"}}}
+{"id": "v2_048", "language": "arabizi", "input": "cancel order 1953 3ashan msh 3ayzo", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1953}}}
+{"id": "v2_083", "language": "en", "input": "Return order 1474 because the item is damaged", "expected": {"tool": "return_order", "arguments": {"order_id": 1474, "reason": "damaged"}}}
+{"id": "v2_088", "language": "arabizi", "input": "return order 1659 3ashan el product talef", "expected": {"tool": "return_order", "arguments": {"order_id": 1659, "reason": "damaged"}}}
+{"id": "v2_086", "language": "mixed", "input": "return للطلب 1585 لأن المنتج not working", "expected": {"tool": "return_order", "arguments": {"order_id": 1585, "reason": "not_working"}}}
+{"id": "v2_102", "language": "mixed", "input": "AirPods Pro 3 موجود عندكم؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "AirPods Pro 3"}}}
+{"id": "v2_051", "language": "en", "input": "Change the shipping address for order 1177 to الإسكندرية", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1177, "new_address": "الإسكندرية"}}}
+{"id": "v2_020", "language": "en", "input": "Track order 1804 for me", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1804}}}
+{"id": "v2_113", "language": "ar", "input": "ممكن أعرف معلومات عن GoPro Hero 14?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "GoPro Hero 14"}}}
+{"id": "v2_126", "language": "ar", "input": "بتوصلوا يوم الجمعة؟", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_133", "language": "mixed", "input": "هاي، محتاج مساعدة", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_035", "language": "en", "input": "Cancel order 1472", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1472}}}
+{"id": "v2_057", "language": "ar", "input": "غير عنوان الطلب 1399 وخليه Alexandria", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1399, "new_address": "Alexandria"}}}
+{"id": "v2_047", "language": "arabizi", "input": "3ayz al8y order 1916", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1916}}}
+{"id": "v2_097", "language": "ar", "input": "ممكن أعرف معلومات عن iPhone 17?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "iPhone 17"}}}
+{"id": "v2_026", "language": "ar", "input": "مش عايز الأوردر 1139، الغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1139}}}
+{"id": "v2_104", "language": "arabizi", "input": "fe details 3an Lenovo ThinkPad X1?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Lenovo ThinkPad X1"}}}
+{"id": "v2_081", "language": "ar", "input": "عايز أرجع الطلب 1400 عشان المنتج مش شغال", "expected": {"tool": "return_order", "arguments": {"order_id": 1400, "reason": "not_working"}}}
+{"id": "v2_085", "language": "mixed", "input": "عايز return order 1548 عشان الـ size غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 1548, "reason": "wrong_size"}}}
+{"id": "v2_001", "language": "ar", "input": "فين طلبي رقم 1101؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1101}}}
+{"id": "v2_079", "language": "arabizi", "input": "3ayz araga3 order 1326 3ashan wesely product ghalat", "expected": {"tool": "return_order", "arguments": {"order_id": 1326, "reason": "wrong_item"}}}
+{"id": "v2_100", "language": "en", "input": "Do you have information about Sony WH-1000XM6?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Sony WH-1000XM6"}}}
+{"id": "v2_015", "language": "arabizi", "input": "order 1619 wesel fein?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1619}}}
+{"id": "v2_111", "language": "arabizi", "input": "3ayz info 3an Logitech MX Master 4", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Logitech MX Master 4"}}}
+{"id": "v2_138", "language": "mixed", "input": "support شغال امتى؟", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_091", "language": "en", "input": "Return order 1770 because the product is not working", "expected": {"tool": "return_order", "arguments": {"order_id": 1770, "reason": "not_working"}}}
+{"id": "v2_109", "language": "mixed", "input": "عايز details عن Google Pixel 11", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Google Pixel 11"}}}
+{"id": "v2_006", "language": "mixed", "input": "order 1286 وصل ولا لسه؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1286}}}
+{"id": "v2_129", "language": "en", "input": "Thanks for your help", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_054", "language": "mixed", "input": "order 1288 غير الـ shipping address لـ الزقازيق", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1288, "new_address": "الزقازيق"}}}
+{"id": "v2_060", "language": "en", "input": "Update order 1510 delivery address to Zagazig", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1510, "new_address": "Zagazig"}}}
+{"id": "v2_058", "language": "ar", "input": "عدل عنوان أوردر 1436 إلى Tanta", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1436, "new_address": "Tanta"}}}
+{"id": "v2_041", "language": "ar", "input": "عايز ألغي الطلب 1694", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1694}}}
+{"id": "v2_068", "language": "en", "input": "Update order 1806 delivery address to Mansoura", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1806, "new_address": "Mansoura"}}}
+{"id": "v2_027", "language": "en", "input": "Cancel order 1176", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1176}}}
+{"id": "v2_017", "language": "ar", "input": "فين طلبي رقم 1693؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1693}}}
+{"id": "v2_112", "language": "arabizi", "input": "fe details 3an Kindle Paperwhite?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Kindle Paperwhite"}}}
+{"id": "v2_032", "language": "arabizi", "input": "cancel order 1361 3ashan msh 3ayzo", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1361}}}
+{"id": "v2_062", "language": "mixed", "input": "order 1584 غير الـ shipping address لـ المنصورة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1584, "new_address": "المنصورة"}}}
+{"id": "v2_118", "language": "mixed", "input": "OnePlus 14 موجود عندكم؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "OnePlus 14"}}}
+{"id": "v2_030", "language": "mixed", "input": "order 1287 عايز ألغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1287}}}
+{"id": "v2_132", "language": "en", "input": "How can I contact support?", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_125", "language": "ar", "input": "سياسة الاسترجاع عندكم إيه؟", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_074", "language": "ar", "input": "محتاج أعمل إرجاع للطلب 1141 لأن وصلني منتج غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 1141, "reason": "wrong_item"}}}
+{"id": "v2_028", "language": "en", "input": "I no longer want order 1213, cancel it", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1213}}}
+{"id": "v2_045", "language": "mixed", "input": "ممكن cancel order 1842؟", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1842}}}
+{"id": "v2_061", "language": "mixed", "input": "عايز update address بتاع order 1547 لـ القاهرة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1547, "new_address": "القاهرة"}}}
+{"id": "v2_076", "language": "en", "input": "I need to return order 1215 because the product is not working", "expected": {"tool": "return_order", "arguments": {"order_id": 1215, "reason": "not_working"}}}
+{"id": "v2_056", "language": "arabizi", "input": "update shipping address bta3 order 1362 le Mansoura", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1362, "new_address": "Mansoura"}}}
+{"id": "v2_008", "language": "arabizi", "input": "3ayz a3raf status order 1360", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1360}}}
+{"id": "v2_053", "language": "mixed", "input": "عايز update address بتاع order 1251 لـ الجيزة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1251, "new_address": "الجيزة"}}}
+{"id": "v2_071", "language": "arabizi", "input": "8ayar address order 1917 le Giza", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1917, "new_address": "Giza"}}}
+{"id": "v2_005", "language": "mixed", "input": "ممكن check order 1249؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1249}}}
+{"id": "v2_012", "language": "en", "input": "Track order 1508 for me", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1508}}}
+{"id": "v2_075", "language": "en", "input": "Return order 1178 because the size is wrong", "expected": {"tool": "return_order", "arguments": {"order_id": 1178, "reason": "wrong_size"}}}
+{"id": "v2_044", "language": "en", "input": "I no longer want order 1805, cancel it", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1805}}}
+{"id": "v2_123", "language": "ar", "input": "شكراً جداً", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_072", "language": "arabizi", "input": "update shipping address bta3 order 1954 le Zagazig", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1954, "new_address": "Zagazig"}}}
+{"id": "v2_023", "language": "arabizi", "input": "order 1915 wesel fein?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1915}}}
+{"id": "v2_108", "language": "en", "input": "Do you have information about iPad Pro M6?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "iPad Pro M6"}}}
+{"id": "v2_127", "language": "en", "input": "Hello", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_107", "language": "en", "input": "Tell me about Galaxy Watch 8", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Galaxy Watch 8"}}}
+{"id": "v2_039", "language": "arabizi", "input": "3ayz al8y order 1620", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1620}}}
+{"id": "v2_013", "language": "mixed", "input": "ممكن check order 1545؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1545}}}
+{"id": "v2_135", "language": "mixed", "input": "hello مساء الخير", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_106", "language": "ar", "input": "هل Apple Watch Series 12 موجود؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Apple Watch Series 12"}}}
+{"id": "v2_055", "language": "arabizi", "input": "8ayar address order 1325 le Cairo", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1325, "new_address": "Cairo"}}}
+{"id": "v2_143", "language": "arabizi", "input": "btwslo yom el gom3a?", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_004", "language": "en", "input": "Track order 1212 for me", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1212}}}
+{"id": "v2_021", "language": "mixed", "input": "ممكن check order 1841؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1841}}}
+{"id": "v2_120", "language": "arabizi", "input": "fe details 3an Meta Quest 4?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Meta Quest 4"}}}
+{"id": "v2_025", "language": "ar", "input": "عايز ألغي الطلب 1102", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1102}}}
+{"id": "v2_073", "language": "ar", "input": "عايز أرجع الطلب 1104 عشان المنتج تالف", "expected": {"tool": "return_order", "arguments": {"order_id": 1104, "reason": "damaged"}}}
+{"id": "v2_144", "language": "arabizi", "input": "ezay akalem support?", "expected": {"tool": "no_tool", "arguments": {}}}

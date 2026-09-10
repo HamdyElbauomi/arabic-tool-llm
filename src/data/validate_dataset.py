@@ -5,7 +5,7 @@ from pathlib import Path
 # Project paths
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-DATASET_PATH = PROJECT_ROOT / "data" / "raw" / "examples_raw.jsonl"
+DATASET_PATH = PROJECT_ROOT / "data" / "raw" / "examples_v2.jsonl"
 TOOLS_CONFIG_PATH = PROJECT_ROOT / "configs" / "tools.json"
 
 

@@ -27,7 +27,7 @@
       "required_arguments": ["order_id", "reason"],
       "parameters": {
         "order_id": "integer",
-        "reason": "string"
+        "reason": "One of: damaged, wrong_item, wrong_size, not_working, other"
       }
     },
     "get_product_info": {

@@ -1,6 +1,12 @@
-{"id": "ex_033", "language": "ar", "input": "مساء الخير", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_016", "language": "ar", "input": "عدل عنوان أوردر 4492 وخليه طنطا", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 4492, "new_address": "طنطا"}}}
-{"id": "ex_020", "language": "en", "input": "Return order 8813 because the item is damaged", "expected": {"tool": "return_order", "arguments": {"order_id": 8813, "reason": "the item is damaged"}}}
-{"id": "ex_004", "language": "mixed", "input": "ممكن check order 3812؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 3812}}}
-{"id": "ex_010", "language": "ar", "input": "مش عايز الطلب رقم 8820، الغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 8820}}}
-{"id": "ex_026", "language": "en", "input": "Tell me about the Samsung Galaxy S26", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Samsung Galaxy S26"}}}
+{"id": "v2_050", "language": "ar", "input": "عدل عنوان أوردر 1140 إلى المنصورة", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1140, "new_address": "المنصورة"}}}
+{"id": "v2_093", "language": "mixed", "input": "عايز return order 1844 عشان المنتج damaged", "expected": {"tool": "return_order", "arguments": {"order_id": 1844, "reason": "damaged"}}}
+{"id": "v2_033", "language": "ar", "input": "عايز ألغي الطلب 1398", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1398}}}
+{"id": "v2_094", "language": "mixed", "input": "return للطلب 1881 لأن وصلني wrong item", "expected": {"tool": "return_order", "arguments": {"order_id": 1881, "reason": "wrong_item"}}}
+{"id": "v2_099", "language": "en", "input": "Tell me about MacBook Air M5", "expected": {"tool": "get_product_info", "arguments": {"product_name": "MacBook Air M5"}}}
+{"id": "v2_018", "language": "ar", "input": "الطلب 1730 وصل لفين؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1730}}}
+{"id": "v2_114", "language": "ar", "input": "هل DJI Osmo Pocket 4 موجود؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "DJI Osmo Pocket 4"}}}
+{"id": "v2_007", "language": "arabizi", "input": "order 1323 wesel fein?", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1323}}}
+{"id": "v2_124", "language": "ar", "input": "تمام شكراً", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_038", "language": "mixed", "input": "order 1583 عايز ألغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1583}}}
+{"id": "v2_069", "language": "mixed", "input": "عايز update address بتاع order 1843 لـ Alexandria", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1843, "new_address": "Alexandria"}}}
+{"id": "v2_130", "language": "en", "input": "What is your return policy?", "expected": {"tool": "no_tool", "arguments": {}}}

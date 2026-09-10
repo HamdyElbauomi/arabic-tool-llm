@@ -1,6 +1,12 @@
-{"id": "ex_028", "language": "ar", "input": "ممكن أعرف تفاصيل Sony WH-1000XM6؟", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Sony WH-1000XM6"}}}
-{"id": "ex_007", "language": "ar", "input": "عايز ألغي الطلب 7821", "expected": {"tool": "cancel_order", "arguments": {"order_id": 7821}}}
-{"id": "ex_032", "language": "en", "input": "Thanks for your help", "expected": {"tool": "no_tool", "arguments": {}}}
-{"id": "ex_014", "language": "en", "input": "Change the shipping address for order 8812 to Cairo", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 8812, "new_address": "Cairo"}}}
-{"id": "ex_002", "language": "ar", "input": "الطلب 7291 وصل لفين؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 7291}}}
-{"id": "ex_021", "language": "ar", "input": "محتاج أعمل إرجاع للطلب 2901 لأنه مقاسه غلط", "expected": {"tool": "return_order", "arguments": {"order_id": 2901, "reason": "مقاسه غلط"}}}
+{"id": "v2_101", "language": "mixed", "input": "عايز details عن PlayStation 6", "expected": {"tool": "get_product_info", "arguments": {"product_name": "PlayStation 6"}}}
+{"id": "v2_122", "language": "ar", "input": "صباح الخير", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_082", "language": "ar", "input": "محتاج أعمل إرجاع للطلب 1437 لأن المنتج مش مناسب ليا", "expected": {"tool": "return_order", "arguments": {"order_id": 1437, "reason": "other"}}}
+{"id": "v2_137", "language": "mixed", "input": "return policy عندكم إيه؟", "expected": {"tool": "no_tool", "arguments": {}}}
+{"id": "v2_077", "language": "mixed", "input": "عايز return order 1252 عشان المنتج مش مناسب", "expected": {"tool": "return_order", "arguments": {"order_id": 1252, "reason": "other"}}}
+{"id": "v2_064", "language": "arabizi", "input": "update shipping address bta3 order 1658 le طنطا", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1658, "new_address": "طنطا"}}}
+{"id": "v2_059", "language": "en", "input": "Change the shipping address for order 1473 to Giza", "expected": {"tool": "update_shipping_address", "arguments": {"order_id": 1473, "new_address": "Giza"}}}
+{"id": "v2_029", "language": "mixed", "input": "ممكن cancel order 1250؟", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1250}}}
+{"id": "v2_016", "language": "arabizi", "input": "3ayz a3raf status order 1656", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1656}}}
+{"id": "v2_116", "language": "en", "input": "Do you have information about Steam Deck OLED?", "expected": {"tool": "get_product_info", "arguments": {"product_name": "Steam Deck OLED"}}}
+{"id": "v2_010", "language": "ar", "input": "الطلب 1434 وصل لفين؟", "expected": {"tool": "get_order_status", "arguments": {"order_id": 1434}}}
+{"id": "v2_046", "language": "mixed", "input": "order 1879 عايز ألغيه", "expected": {"tool": "cancel_order", "arguments": {"order_id": 1879}}}

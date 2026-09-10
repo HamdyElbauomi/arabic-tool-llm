@@ -6,7 +6,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-INPUT_PATH = PROJECT_ROOT / "data" / "raw" / "examples_raw.jsonl"
+INPUT_PATH = PROJECT_ROOT / "data" / "raw" / "examples_v2.jsonl"
 
 TRAIN_PATH = PROJECT_ROOT / "data" / "processed" / "train.jsonl"
 VALIDATION_PATH = PROJECT_ROOT / "data" / "processed" / "validation.jsonl"
@@ -44,55 +44,92 @@ def save_jsonl(examples: list[dict], path: Path) -> None:
             )
 
 
-def split_dataset(examples: list[dict]):
+def split_dataset(
+    examples: list[dict],
+):
     """
-    Split dataset by tool.
-
-    Each tool currently has 6 examples:
-    - 4 train
-    - 1 validation
-    - 1 test
+    Stratified 80/10/10 split by tool.
     """
 
     random.seed(RANDOM_SEED)
 
     grouped_examples = defaultdict(list)
 
-    # Group examples by tool
     for example in examples:
         tool_name = example["expected"]["tool"]
 
-        grouped_examples[tool_name].append(example)
+        grouped_examples[
+            tool_name
+        ].append(example)
 
     train_examples = []
     validation_examples = []
     test_examples = []
 
-    for tool_name, tool_examples in grouped_examples.items():
+    for tool_name, tool_examples in (
+        grouped_examples.items()
+    ):
 
-        random.shuffle(tool_examples)
+        random.shuffle(
+            tool_examples
+        )
 
-        if len(tool_examples) < 3:
+        total = len(
+            tool_examples
+        )
+
+        validation_count = max(
+            1,
+            round(total * 0.10),
+        )
+
+        test_count = max(
+            1,
+            round(total * 0.10),
+        )
+
+        if (
+            validation_count
+            + test_count
+            >= total
+        ):
             raise ValueError(
-                f"Tool '{tool_name}' needs at least 3 examples "
-                f"for train/validation/test splitting."
+                f"Not enough examples "
+                f"for '{tool_name}'."
             )
 
-        # For our current dataset:
-        # 6 examples -> 4 train, 1 validation, 1 test
+        test_examples.extend(
+            tool_examples[
+                :test_count
+            ]
+        )
 
-        test_example = tool_examples[0]
-        validation_example = tool_examples[1]
-        train_tool_examples = tool_examples[2:]
+        validation_examples.extend(
+            tool_examples[
+                test_count:
+                test_count
+                + validation_count
+            ]
+        )
 
-        test_examples.append(test_example)
-        validation_examples.append(validation_example)
-        train_examples.extend(train_tool_examples)
+        train_examples.extend(
+            tool_examples[
+                test_count
+                + validation_count:
+            ]
+        )
 
-    # Shuffle final datasets
-    random.shuffle(train_examples)
-    random.shuffle(validation_examples)
-    random.shuffle(test_examples)
+    random.shuffle(
+        train_examples
+    )
+
+    random.shuffle(
+        validation_examples
+    )
+
+    random.shuffle(
+        test_examples
+    )
 
     return (
         train_examples,

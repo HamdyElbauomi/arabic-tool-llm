@@ -37,7 +37,7 @@ TOOLS_PATH = (
 OUTPUT_DIR = (
     PROJECT_ROOT
     / "models"
-    / "qwen3-0.6b-tool-calling-smoke-lora"
+    / "qwen3-0.6b-tool-calling-v2-lora"
 )
 
 MODEL_NAME = "Qwen/Qwen3-0.6B"
@@ -223,7 +223,7 @@ def create_lora_config():
     return LoraConfig(
         r=8,
         lora_alpha=16,
-        lora_dropout=0.05,
+        lora_dropout=0.10,
 
         target_modules=[
             "q_proj",
@@ -258,9 +258,11 @@ def create_training_config():
         # Simulates a larger effective batch.
         gradient_accumulation_steps=4,
 
-        num_train_epochs=3,
+        num_train_epochs=2,
+        learning_rate=5e-5,
 
-        learning_rate=1e-4,
+        warmup_ratio=0.10,
+        weight_decay=0.01,
 
         # Our GPU does not support BF16 well,
         # so we use FP16.
