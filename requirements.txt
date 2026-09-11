@@ -1,0 +1,12 @@
+# Inference/API dependencies, matched to the working project environment.
+# Install CUDA PyTorch first (see Dockerfile or DOCKER.md).
+torch==2.9.1+cu126
+transformers==5.16.1
+peft==0.20.0
+accelerate==1.14.0
+bitsandbytes==0.50.2
+fastapi==0.141.1
+uvicorn==0.52.4
+pydantic==2.13.5
+safetensors==0.8.0
+huggingface-hub==1.30.0

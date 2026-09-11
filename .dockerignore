@@ -1,0 +1,18 @@
+# Only application source, tool definitions and tests enter the build context.
+**
+!Dockerfile
+!requirements.txt
+!src/
+!src/**
+!configs/
+!configs/tools.json
+!tests/
+!tests/**
+
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
