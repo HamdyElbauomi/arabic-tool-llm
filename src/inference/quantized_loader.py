@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import bitsandbytes as bnb
@@ -16,12 +17,86 @@ from transformers import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-BASE_MODEL = "Qwen/Qwen3-0.6B"
+MODEL_REGISTRY_PATH = (
+    PROJECT_ROOT
+    / "configs"
+    / "model_registry.json"
+)
+
+
+# --------------------------------------------------
+# Load active model configuration
+# --------------------------------------------------
+
+def load_active_model_config() -> dict:
+    """
+    Read the active model configuration
+    from model_registry.json.
+
+    This allows us to switch model versions
+    without changing the inference code.
+    """
+
+    if not MODEL_REGISTRY_PATH.exists():
+        raise FileNotFoundError(
+            f"Model registry not found: "
+            f"{MODEL_REGISTRY_PATH}"
+        )
+
+    with open(
+        MODEL_REGISTRY_PATH,
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        registry = json.load(file)
+
+    if "active_model" not in registry:
+        raise ValueError(
+            "model_registry.json is missing "
+            "'active_model'."
+        )
+
+    active_model = registry[
+        "active_model"
+    ]
+
+    required_fields = {
+        "version",
+        "base_model",
+        "adapter",
+    }
+
+    missing_fields = (
+        required_fields
+        - active_model.keys()
+    )
+
+    if missing_fields:
+        raise ValueError(
+            "Active model configuration is "
+            f"missing fields: {missing_fields}"
+        )
+
+    return active_model
+
+
+# Load active model metadata
+ACTIVE_MODEL = (
+    load_active_model_config()
+)
+
+MODEL_VERSION = ACTIVE_MODEL[
+    "version"
+]
+
+BASE_MODEL = ACTIVE_MODEL[
+    "base_model"
+]
 
 ADAPTER_PATH = (
     PROJECT_ROOT
-    / "models"
-    / "qwen3-0.6b-tool-calling-v2-lora"
+    / ACTIVE_MODEL["adapter"]
 )
 
 
@@ -56,7 +131,10 @@ def count_4bit_layers(model) -> int:
     """
 
     return sum(
-        isinstance(module, bnb.nn.Linear4bit)
+        isinstance(
+            module,
+            bnb.nn.Linear4bit,
+        )
         for module in model.modules()
     )
 
@@ -67,46 +145,97 @@ def count_4bit_layers(model) -> int:
 
 def load_quantized_model():
     """
-    Load:
-        Qwen3-0.6B base model in 4-bit
+    Load the active model version:
+
+        Base model in 4-bit NF4
         +
-        our trained V2 LoRA adapter
+        Active LoRA adapter
+
+    The selected version comes from:
+
+        configs/model_registry.json
     """
 
     print("=" * 60)
     print("LOADING QUANTIZED FINE-TUNED MODEL")
     print("=" * 60)
 
-    print(f"Base model : {BASE_MODEL}")
-    print(f"Adapter    : {ADAPTER_PATH}")
-
-    # Load tokenizer
-    print("\nLoading tokenizer...")
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        BASE_MODEL
+    print(
+        f"Model version : "
+        f"{MODEL_VERSION}"
     )
 
+    print(
+        f"Base model    : "
+        f"{BASE_MODEL}"
+    )
+
+    print(
+        f"Adapter       : "
+        f"{ADAPTER_PATH}"
+    )
+
+    # --------------------------------------------------
+    # Validate adapter path
+    # --------------------------------------------------
+
+    if not ADAPTER_PATH.exists():
+        raise FileNotFoundError(
+            f"LoRA adapter not found: "
+            f"{ADAPTER_PATH}"
+        )
+
+    # --------------------------------------------------
+    # Load tokenizer
+    # --------------------------------------------------
+
+    print(
+        "\nLoading tokenizer..."
+    )
+
+    tokenizer = (
+        AutoTokenizer.from_pretrained(
+            BASE_MODEL
+        )
+    )
+
+    # --------------------------------------------------
     # Create 4-bit configuration
+    # --------------------------------------------------
+
     quantization_config = (
         create_quantization_config()
     )
 
-    # Load base model directly in 4-bit
-    print("Loading base model in 4-bit NF4...")
+    # --------------------------------------------------
+    # Load base model in 4-bit
+    # --------------------------------------------------
+
+    print(
+        "Loading base model "
+        "in 4-bit NF4..."
+    )
 
     base_model = (
         AutoModelForCausalLM.from_pretrained(
             BASE_MODEL,
-            quantization_config=quantization_config,
+            quantization_config=(
+                quantization_config
+            ),
             device_map="auto",
             dtype=torch.float16,
             low_cpu_mem_usage=True,
         )
     )
 
-    quantized_layers = count_4bit_layers(
-        base_model
+    # --------------------------------------------------
+    # Verify quantization
+    # --------------------------------------------------
+
+    quantized_layers = (
+        count_4bit_layers(
+            base_model
+        )
     )
 
     print(
@@ -114,26 +243,39 @@ def load_quantized_model():
         f"{quantized_layers}"
     )
 
-    # Attach trained LoRA adapter
-    print("Loading V2 LoRA adapter...")
+    # --------------------------------------------------
+    # Attach active LoRA adapter
+    # --------------------------------------------------
 
-    model = PeftModel.from_pretrained(
-        base_model,
-        ADAPTER_PATH,
-        is_trainable=False,
+    print(
+        f"Loading {MODEL_VERSION} "
+        f"LoRA adapter..."
+    )
+
+    model = (
+        PeftModel.from_pretrained(
+            base_model,
+            ADAPTER_PATH,
+            is_trainable=False,
+        )
     )
 
     model.eval()
 
-    # Check that no parameters are trainable
+    # --------------------------------------------------
+    # Verify inference mode
+    # --------------------------------------------------
+
     trainable_parameters = sum(
         parameter.numel()
-        for parameter in model.parameters()
+        for parameter
+        in model.parameters()
         if parameter.requires_grad
     )
 
     print(
-        f"Trainable parameters during inference: "
+        "Trainable parameters "
+        "during inference: "
         f"{trainable_parameters}"
     )
 
@@ -160,30 +302,48 @@ def main() -> None:
         load_quantized_model()
     )
 
-    print("\n" + "=" * 60)
-    print("QUANTIZATION CHECK")
-    print("=" * 60)
-
-    quantized_layers = count_4bit_layers(
-        model
+    print(
+        "\n" + "=" * 60
     )
 
     print(
-        f"Detected 4-bit layers : "
+        "QUANTIZATION CHECK"
+    )
+
+    print(
+        "=" * 60
+    )
+
+    quantized_layers = (
+        count_4bit_layers(
+            model
+        )
+    )
+
+    print(
+        "Detected 4-bit layers : "
         f"{quantized_layers}"
     )
 
     print(
-        f"Adapter loaded        : "
+        "Model version         : "
+        f"{MODEL_VERSION}"
+    )
+
+    print(
+        "Adapter loaded        : "
         f"{ADAPTER_PATH.name}"
     )
 
     print(
-        f"Model training mode   : "
+        "Model training mode   : "
         f"{model.training}"
     )
 
-    print("\n✅ Quantized model loaded successfully.")
+    print(
+        "\n✅ Quantized model "
+        "loaded successfully."
+    )
 
 
 if __name__ == "__main__":

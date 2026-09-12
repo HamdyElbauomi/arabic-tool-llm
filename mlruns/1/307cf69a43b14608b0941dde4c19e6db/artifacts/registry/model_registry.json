@@ -1,0 +1,28 @@
+{
+  "active_model": {
+    "version": "v2",
+    "base_model": "Qwen/Qwen3-0.6B",
+    "adapter": "models/qwen3-0.6b-tool-calling-v2-lora",
+    "quantization": "4-bit NF4",
+    "status": "production_candidate"
+  },
+  "models": {
+    "v1": {
+      "base_model": "Qwen/Qwen3-0.6B",
+      "adapter": "models/qwen3-0.6b-tool-calling-smoke-lora",
+      "dataset": "dataset_v1",
+      "exact_match": 0.50,
+      "status": "archived"
+    },
+    "v2": {
+      "base_model": "Qwen/Qwen3-0.6B",
+      "adapter": "models/qwen3-0.6b-tool-calling-v2-lora",
+      "dataset": "dataset_v2",
+      "exact_match": 0.8333,
+      "tool_accuracy": 0.9167,
+      "argument_accuracy": 0.8333,
+      "json_validity": 1.0,
+      "status": "production_candidate"
+    }
+  }
+}

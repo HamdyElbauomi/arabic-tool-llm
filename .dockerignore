@@ -1,18 +1,37 @@
-# Only application source, tool definitions and tests enter the build context.
-**
-!Dockerfile
-!requirements.txt
-!src/
-!src/**
-!configs/
-!configs/tools.json
-!tests/
-!tests/**
+# Python
+__pycache__/
+*.pyc
+*.pyo
 
-**/__pycache__/
-**/*.py[cod]
-**/.pytest_cache/
-**/.env
-**/.env.*
-**/*.pem
-**/*.key
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files
+models/
+weights/
+checkpoints/
+
+# Logs
+logs/
+
+# Tests
+.pytest_cache/
+
+# MLflow
+mlflow.db
+mlruns/
