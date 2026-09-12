@@ -1,0 +1,280 @@
+{
+  "environment": {
+    "gpu": "Quadro P1000",
+    "gpu_total_mb": 4095.88,
+    "model_version": "v2",
+    "base_model": "Qwen/Qwen3-0.6B",
+    "quantization": "4-bit NF4"
+  },
+  "model_loading": {
+    "load_time_seconds": 5.026,
+    "process_ram_before_load_mb": 764.75,
+    "process_ram_after_load_mb": 1066.14,
+    "gpu_allocated_after_load_mb": 518.35,
+    "gpu_reserved_after_load_mb": 1056.0
+  },
+  "inference": {
+    "successful_requests": 15,
+    "failed_requests": 3,
+    "average_latency_seconds": 4.9187,
+    "p50_latency_seconds": 4.7234,
+    "p95_latency_seconds": 5.91,
+    "min_latency_seconds": 4.5162,
+    "max_latency_seconds": 5.91,
+    "throughput_requests_per_second": 0.2033,
+    "effective_output_tokens_per_second": 4.4728
+  },
+  "memory": {
+    "gpu_peak_allocated_mb": 630.86,
+    "gpu_peak_reserved_mb": 1116.0,
+    "process_peak_ram_mb": 2445.05
+  },
+  "runs": [
+    {
+      "repeat": 1,
+      "example": 1,
+      "message": "فين الطلب رقم 3147 وصل؟",
+      "status": "success",
+      "latency_seconds": 4.7234,
+      "generated_tokens": 21,
+      "result": {
+        "tool": "get_order_status",
+        "arguments": {
+          "order_id": 3147
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "example": 2,
+      "message": "Please cancel order 4208",
+      "status": "success",
+      "latency_seconds": 4.5198,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 4208
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "example": 3,
+      "message": "غير عنوان الطلب 5510 وخليه القاهرة",
+      "status": "success",
+      "latency_seconds": 4.5332,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 5510
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "example": 4,
+      "message": "Return order 6621 because the item is damaged",
+      "status": "success",
+      "latency_seconds": 5.8985,
+      "generated_tokens": 27,
+      "result": {
+        "tool": "return_order",
+        "arguments": {
+          "order_id": 6621,
+          "reason": "damaged"
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "example": 5,
+      "message": "ممكن معلومات عن MacBook Air M5؟",
+      "status": "success",
+      "latency_seconds": 4.9151,
+      "generated_tokens": 22,
+      "result": {
+        "tool": "get_product_info",
+        "arguments": {
+          "product_name": "MacBook Air M5"
+        }
+      }
+    },
+    {
+      "repeat": 1,
+      "example": 6,
+      "message": "مساء الخير يا صديقي",
+      "status": "failed",
+      "latency_seconds": 2.7603,
+      "generated_tokens": 0,
+      "result": {
+        "error": "Model returned invalid JSON:\n{\"tool\": \"no_tool\", \"arguments\": {}"
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 1,
+      "message": "فين الطلب رقم 3147 وصل؟",
+      "status": "success",
+      "latency_seconds": 4.7273,
+      "generated_tokens": 21,
+      "result": {
+        "tool": "get_order_status",
+        "arguments": {
+          "order_id": 3147
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 2,
+      "message": "Please cancel order 4208",
+      "status": "success",
+      "latency_seconds": 4.5162,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 4208
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 3,
+      "message": "غير عنوان الطلب 5510 وخليه القاهرة",
+      "status": "success",
+      "latency_seconds": 4.5275,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 5510
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 4,
+      "message": "Return order 6621 because the item is damaged",
+      "status": "success",
+      "latency_seconds": 5.8985,
+      "generated_tokens": 27,
+      "result": {
+        "tool": "return_order",
+        "arguments": {
+          "order_id": 6621,
+          "reason": "damaged"
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 5,
+      "message": "ممكن معلومات عن MacBook Air M5؟",
+      "status": "success",
+      "latency_seconds": 4.9032,
+      "generated_tokens": 22,
+      "result": {
+        "tool": "get_product_info",
+        "arguments": {
+          "product_name": "MacBook Air M5"
+        }
+      }
+    },
+    {
+      "repeat": 2,
+      "example": 6,
+      "message": "مساء الخير يا صديقي",
+      "status": "failed",
+      "latency_seconds": 2.7637,
+      "generated_tokens": 0,
+      "result": {
+        "error": "Model returned invalid JSON:\n{\"tool\": \"no_tool\", \"arguments\": {}"
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 1,
+      "message": "فين الطلب رقم 3147 وصل؟",
+      "status": "success",
+      "latency_seconds": 4.7232,
+      "generated_tokens": 21,
+      "result": {
+        "tool": "get_order_status",
+        "arguments": {
+          "order_id": 3147
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 2,
+      "message": "Please cancel order 4208",
+      "status": "success",
+      "latency_seconds": 4.5185,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 4208
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 3,
+      "message": "غير عنوان الطلب 5510 وخليه القاهرة",
+      "status": "success",
+      "latency_seconds": 4.5388,
+      "generated_tokens": 20,
+      "result": {
+        "tool": "cancel_order",
+        "arguments": {
+          "order_id": 5510
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 4,
+      "message": "Return order 6621 because the item is damaged",
+      "status": "success",
+      "latency_seconds": 5.91,
+      "generated_tokens": 27,
+      "result": {
+        "tool": "return_order",
+        "arguments": {
+          "order_id": 6621,
+          "reason": "damaged"
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 5,
+      "message": "ممكن معلومات عن MacBook Air M5؟",
+      "status": "success",
+      "latency_seconds": 4.9268,
+      "generated_tokens": 22,
+      "result": {
+        "tool": "get_product_info",
+        "arguments": {
+          "product_name": "MacBook Air M5"
+        }
+      }
+    },
+    {
+      "repeat": 3,
+      "example": 6,
+      "message": "مساء الخير يا صديقي",
+      "status": "failed",
+      "latency_seconds": 2.77,
+      "generated_tokens": 0,
+      "result": {
+        "error": "Model returned invalid JSON:\n{\"tool\": \"no_tool\", \"arguments\": {}"
+      }
+    }
+  ]
+}
